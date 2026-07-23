@@ -1,4 +1,4 @@
-/* ===== GK CHALLENGE COMPLETE STYLE ===== */
+/* ===== GK CHALLENGE QUIZ STYLE ===== */
 
 * {
     box-sizing: border-box;
@@ -9,7 +9,7 @@ body {
     font-family: 'Poppins', Arial, sans-serif;
     background: linear-gradient(135deg, #667eea, #764ba2);
     margin: 0;
-    padding: 20px;
+    padding: 10px;
     min-height: 100vh;
 }
 
@@ -17,75 +17,96 @@ body {
 /* MAIN CONTAINER */
 
 .container {
-    max-width: 750px;
-    margin: 40px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 25px;
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.25);
+    max-width: 700px;
+
+    margin: 25px auto;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+
 }
 
 
-/* HEADINGS */
+
+/* TITLE */
 
 h1 {
+
     text-align: center;
+
     color: #4a148c;
-    font-size: 32px;
+
+    font-size: 28px;
+
     font-weight: 900;
-    margin-bottom: 15px;
+
+    margin: 5px 0 15px;
+
 }
 
 
 h2 {
+
     text-align: center;
+
     color: #6a1b9a;
+
     font-weight: 800;
+
 }
+
 
 
 p {
+
     text-align: center;
-    font-size: 17px;
-    font-weight: 600;
+
     color: #444;
+
+    font-size: 15px;
+
 }
 
 
-/* QUIZ QUESTION BOX */
+
+/* QUESTION CARD */
 
 .question {
 
     background: #f8f9ff;
 
-    padding: 20px;
+    padding: 14px;
 
-    margin: 25px 0;
+    margin: 15px 0;
 
-    border-radius: 18px;
+    border-radius: 12px;
 
-    border-left: 6px solid #667eea;
+    border-left: 5px solid #667eea;
 
-    box-shadow:
-        0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 
 }
 
 
 .question h3 {
 
+    font-size: 16px;
+
     color: #333;
 
-    font-size: 18px;
-
-    margin-bottom: 15px;
+    margin: 0 0 12px;
 
 }
 
 
-/* OPTIONS */
+
+/* ANSWER OPTIONS */
 
 .option {
 
@@ -95,21 +116,21 @@ p {
 
     background: #ffffff;
 
-    padding: 14px;
+    padding: 10px;
 
-    margin: 12px 0;
+    margin: 8px 0;
 
-    border-radius: 12px;
+    border-radius: 8px;
 
-    border: 2px solid #ddd;
+    border: 1.5px solid #ddd;
 
     cursor: pointer;
 
-    font-size: 16px;
+    font-size: 15px;
 
     font-weight: 600;
 
-    transition: 0.3s;
+    transition: 0.25s;
 
 }
 
@@ -120,22 +141,20 @@ p {
 
     border-color: #667eea;
 
-    transform: translateX(5px);
-
 }
+
 
 
 /* RADIO BUTTON */
 
 .option input {
 
-    margin-right: 12px;
+    margin-right: 8px;
 
-    transform: scale(1.2);
-
-    cursor: pointer;
+    transform: scale(1.1);
 
 }
+
 
 
 /* BUTTON */
@@ -144,31 +163,25 @@ button {
 
     display: block;
 
-    margin: 25px auto;
+    margin: 18px auto;
 
-    padding: 15px 35px;
+    padding: 12px 30px;
 
     border: none;
 
-    border-radius: 50px;
+    border-radius: 40px;
 
-    background: linear-gradient(
-        135deg,
-        #ff512f,
-        #dd2476
-    );
+    background: linear-gradient(135deg,#ff512f,#dd2476);
 
     color: white;
 
-    font-size: 18px;
+    font-size: 16px;
 
-    font-weight: 900;
+    font-weight: bold;
 
     cursor: pointer;
 
-    box-shadow:
-
-        0 8px 20px rgba(221,36,118,0.35);
+    box-shadow: 0 6px 15px rgba(221,36,118,0.35);
 
     transition: 0.3s;
 
@@ -177,11 +190,7 @@ button {
 
 button:hover {
 
-    transform: translateY(-4px);
-
-    box-shadow:
-
-        0 12px 25px rgba(221,36,118,0.45);
+    transform: translateY(-2px);
 
 }
 
@@ -193,23 +202,13 @@ button:hover {
 
     background: #f8f9ff;
 
-    padding: 25px;
+    padding: 15px;
 
-    border-radius: 20px;
+    border-radius: 15px;
 
     text-align: center;
 
-    margin: 20px 0;
-
-}
-
-
-
-/* LINKS */
-
-a {
-
-    text-decoration: none;
+    margin: 15px 0;
 
 }
 
@@ -225,61 +224,50 @@ small {
 
     color: #666;
 
-    margin-top: 25px;
-
-    font-size: 14px;
+    margin-top: 15px;
 
 }
 
 
 
-/* MOBILE DESIGN */
+/* MOBILE */
 
 @media(max-width:600px) {
 
 
-    body {
-
-        padding: 10px;
-
-    }
-
-
     .container {
-
-        padding: 20px;
-
-        margin: 20px auto;
-
-    }
-
-
-    h1 {
-
-        font-size: 24px;
-
-    }
-
-
-    .question {
 
         padding: 15px;
 
     }
 
 
-    .option {
+    h1 {
 
-        font-size: 15px;
+        font-size: 22px;
+
+    }
+
+
+    .question {
 
         padding: 12px;
 
     }
 
 
+    .option {
+
+        font-size: 14px;
+
+        padding: 9px;
+
+    }
+
+
     button {
 
-        width: 90%;
+        width: 85%;
 
     }
 
