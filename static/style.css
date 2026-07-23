@@ -1,84 +1,286 @@
+/* ===== GK CHALLENGE COMPLETE STYLE ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+
 body {
     font-family: 'Poppins', Arial, sans-serif;
     background: linear-gradient(135deg, #667eea, #764ba2);
     margin: 0;
-    padding: 0;
+    padding: 20px;
     min-height: 100vh;
 }
 
-/* Main Box */
+
+/* MAIN CONTAINER */
+
 .container {
-    max-width: 700px;
-    margin: 50px auto;
-    background: rgba(255, 255, 255, 0.95);
+    max-width: 750px;
+    margin: 40px auto;
+    background: white;
     padding: 30px;
-    border-radius: 20px;
-    box-shadow: 
-        0 15px 35px rgba(0,0,0,0.2),
-        inset 0 0 20px rgba(255,255,255,0.5);
-    backdrop-filter: blur(10px);
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.25);
 }
 
-/* Heading */
-h1, h2 {
+
+/* HEADINGS */
+
+h1 {
     text-align: center;
     color: #4a148c;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+
+h2 {
+    text-align: center;
+    color: #6a1b9a;
     font-weight: 800;
-    letter-spacing: 1px;
 }
 
-/* Question Box */
-.question {
-    background: #f8f9ff;
-    padding: 18px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-    border-left: 6px solid #667eea;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
 
-/* Buttons */
-button {
-    background: linear-gradient(135deg, #ff512f, #dd2476);
-    color: white;
-    border: none;
-    padding: 14px 25px;
-    border-radius: 50px;
-    cursor: pointer;
+p {
+    text-align: center;
     font-size: 17px;
-    font-weight: bold;
-    transition: 0.3s;
-    display: block;
-    margin: 20px auto;
-    box-shadow: 0 8px 15px rgba(221,36,118,0.3);
+    font-weight: 600;
+    color: #444;
 }
 
-button:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(135deg, #dd2476, #ff512f);
-    box-shadow: 0 12px 20px rgba(221,36,118,0.4);
+
+/* QUIZ QUESTION BOX */
+
+.question {
+
+    background: #f8f9ff;
+
+    padding: 20px;
+
+    margin: 25px 0;
+
+    border-radius: 18px;
+
+    border-left: 6px solid #667eea;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.08);
+
 }
 
-/* Options */
+
+.question h3 {
+
+    color: #333;
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* OPTIONS */
+
 .option {
-    background: white;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 10px;
+
+    display: block;
+
+    width: 100%;
+
+    background: #ffffff;
+
+    padding: 14px;
+
+    margin: 12px 0;
+
+    border-radius: 12px;
+
+    border: 2px solid #ddd;
+
     cursor: pointer;
-    border: 2px solid #e0e0e0;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
     transition: 0.3s;
+
 }
+
 
 .option:hover {
-    border-color: #667eea;
+
     background: #eef1ff;
+
+    border-color: #667eea;
+
+    transform: translateX(5px);
+
 }
 
-/* Footer Text */
-small {
+
+/* RADIO BUTTON */
+
+.option input {
+
+    margin-right: 12px;
+
+    transform: scale(1.2);
+
+    cursor: pointer;
+
+}
+
+
+/* BUTTON */
+
+button {
+
     display: block;
+
+    margin: 25px auto;
+
+    padding: 15px 35px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #ff512f,
+        #dd2476
+    );
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 8px 20px rgba(221,36,118,0.35);
+
+    transition: 0.3s;
+
+}
+
+
+button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+
+        0 12px 25px rgba(221,36,118,0.45);
+
+}
+
+
+
+/* RESULT BOX */
+
+.result-box {
+
+    background: #f8f9ff;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
     text-align: center;
+
+    margin: 20px 0;
+
+}
+
+
+
+/* LINKS */
+
+a {
+
+    text-decoration: none;
+
+}
+
+
+
+/* FOOTER */
+
+small {
+
+    display: block;
+
+    text-align: center;
+
     color: #666;
-    margin-top: 20px;
+
+    margin-top: 25px;
+
+    font-size: 14px;
+
+}
+
+
+
+/* MOBILE DESIGN */
+
+@media(max-width:600px) {
+
+
+    body {
+
+        padding: 10px;
+
+    }
+
+
+    .container {
+
+        padding: 20px;
+
+        margin: 20px auto;
+
+    }
+
+
+    h1 {
+
+        font-size: 24px;
+
+    }
+
+
+    .question {
+
+        padding: 15px;
+
+    }
+
+
+    .option {
+
+        font-size: 15px;
+
+        padding: 12px;
+
+    }
+
+
+    button {
+
+        width: 90%;
+
+    }
+
 }
