@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GK Challenge</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🎉 GK Challenge</h1>
+
+    <form method="POST">
+
+    {% for q in questions %}
+
+        <div class="question">
+            <h3>{{ loop.index }}. {{ q.question }}</h3>
+
+            {% set qindex = loop.index0 %}
+
+            {% for option in q.options %}
+
+                <label>
+                    <input type="radio" name="q{{ qindex }}" value="{{ option }}" required>
+                    {{ option }}
+                </label>
+                <br>
+
+            {% endfor %}
+
+        </div>
+        <br>
+
+    {% endfor %}
+
+    <button type="submit">Submit Quiz</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
