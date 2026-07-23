@@ -1,43 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title> 𝐆𝐊 𝐂𝐇𝐀𝐋𝐋𝐄𝐍𝐆𝐄 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>𝐆𝐊 𝐂𝐇𝐀𝐋𝐋𝐄𝐍𝐆𝐄</title>
+
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
 
 <div class="container">
-    <h1>𝐆𝐊 𝐂𝐇𝐀𝐋𝐋𝐄𝐍𝐆𝐄</h1>
+
+    <h1>
+        🧠 𝐆𝐊 𝐂𝐇𝐀𝐋𝐋𝐄𝐍𝐆𝐄 🧠
+    </h1>
+
+    <p>
+        🔥 <b>𝐀𝐍𝐒𝐖𝐄𝐑 𝐀𝐋𝐋 𝐐𝐔𝐄𝐒𝐓𝐈𝐎𝐍𝐒 𝐀𝐍𝐃 𝐓𝐄𝐒𝐓 𝐘𝐎𝐔𝐑 𝐊𝐍𝐎𝐖𝐋𝐄𝐃𝐆𝐄</b> 🔥
+    </p>
+
 
     <form method="POST">
 
     {% for q in questions %}
 
         <div class="question">
-            <h3>{{ loop.index }}. {{ q.question }}</h3>
+
+            <h3>
+                {{ loop.index }}. <b>{{ q.question }}</b>
+            </h3>
 
             {% set qindex = loop.index0 %}
 
+
             {% for option in q.options %}
 
-                <label>
-                    <input type="radio" name="q{{ qindex }}" value="{{ option }}" required>
-                    {{ option }}
+                <label class="option">
+
+                    <input 
+                        type="radio" 
+                        name="q{{ qindex }}" 
+                        value="{{ option }}" 
+                        required
+                    >
+
+                    <b>{{ option }}</b>
+
                 </label>
+
                 <br>
 
             {% endfor %}
 
         </div>
+
         <br>
 
     {% endfor %}
 
-    <button type="submit">Submit Quiz</button>
+
+        <button type="submit">
+            🚀 <b>SUBMIT QUIZ</b> 🚀
+        </button>
+
 
     </form>
 
 </div>
 
 </body>
+
 </html>
