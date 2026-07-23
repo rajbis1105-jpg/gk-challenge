@@ -19,7 +19,7 @@
     </h1>
 
     <p>
-        🔥 <b>𝐀𝐍𝐒𝐖𝐄𝐑 𝐀𝐋𝐋 𝐐𝐔𝐄𝐒𝐓𝐈𝐎𝐍𝐒 𝐀𝐍𝐃 𝐓𝐄𝐒𝐓 𝐘𝐎𝐔𝐑 𝐊𝐍𝐎𝐖𝐋𝐄𝐃𝐆𝐄</b> 🔥
+        🔥 <b>𝐏𝐀𝐆𝐄 {{ page }} / {{ total_pages }}</b> 🔥
     </p>
 
 
@@ -30,10 +30,8 @@
         <div class="question">
 
             <h3>
-                {{ loop.index }}. <b>{{ q.question }}</b>
+                {{ (page-1)*10 + loop.index }}. <b>{{ q.question }}</b>
             </h3>
-
-            {% set qindex = loop.index0 %}
 
 
             {% for option in q.options %}
@@ -41,9 +39,9 @@
                 <label class="option">
 
                     <input 
-                        type="radio" 
-                        name="q{{ qindex }}" 
-                        value="{{ option }}" 
+                        type="radio"
+                        name="q{{ (page-1)*10 + loop.index0 }}"
+                        value="{{ option }}"
                         required
                     >
 
@@ -51,20 +49,30 @@
 
                 </label>
 
-                <br>
 
             {% endfor %}
 
         </div>
 
-        <br>
 
     {% endfor %}
 
 
+
+    {% if page < total_pages %}
+
+        <button type="button" onclick="window.location.href='/quiz?page={{ page + 1 }}'">
+            ➡️ <b>NEXT</b>
+        </button>
+
+    {% else %}
+
         <button type="submit">
             🚀 <b>SUBMIT QUIZ</b> 🚀
         </button>
+
+    {% endif %}
+
 
 
     </form>
