@@ -36,6 +36,40 @@
 
     <br>
 
+    <h2>📋 𝐀𝐍𝐒𝐖𝐄𝐑 𝐑𝐄𝐕𝐈𝐄𝐖</h2>
+
+    {% for r in results %}
+
+    <div class="result-box" style="text-align:left; margin-top:20px;">
+
+        <h3>{{ loop.index }}. {{ r.question }}</h3>
+
+        <p>
+            <strong>📝 𝐘𝐎𝐔𝐑 𝐀𝐍𝐒𝐖𝐄𝐑:</strong>
+            {{ r.user_answer }}
+        </p>
+
+        <p>
+            <strong>✅ 𝐂𝐎𝐑𝐑𝐄𝐂𝐓 𝐀𝐍𝐒𝐖𝐄𝐑:</strong>
+            {{ r.correct_answer }}
+        </p>
+
+        {% if r.is_correct %}
+            <p style="color:green;">
+                ✔ <strong>𝐂𝐎𝐑𝐑𝐄𝐂𝐓</strong>
+            </p>
+        {% else %}
+            <p style="color:red;">
+                ✘ <strong>𝐖𝐑𝐎𝐍𝐆</strong>
+            </p>
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+    <br>
+
     <a href="/">
         <button>
             🏠 <b>𝐇𝐎𝐌𝐄</b>
