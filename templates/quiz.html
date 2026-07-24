@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,71 +7,50 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
 
 <div class="container">
 
-    <header>
-        <h1>🌍 GK MASTER QUIZ 🌍</h1>
-        <p><strong>Page {{ page }} of {{ total_pages }}</strong></p>
-    </header>
+    <h1>🌍 GK MASTER QUIZ 🌍</h1>
 
-    <form method="POST">
+    <h3>Question {{ current + 1 }} of {{ total }}</h3>
 
-        {% for q in questions %}
+    <div class="question-box">
 
-            {% set qindex = (page-1)*10 + loop.index0 %}
+        <h2>{{ question.question }}</h2>
 
-            <div class="question-box">
+        <form action="/answer" method="POST">
 
-                <h3>
-                    Question {{ (page-1)*10 + loop.index }}
-                </h3>
+            <input type="hidden" name="current" value="{{ current }}">
 
-                <p><strong>{{ q.question }}</strong></p>
+            {% for option in question.options %}
 
-                {% for option in q.options %}
+            <label class="option">
+                <input
+                    type="radio"
+                    name="answer"
+                    value="{{ option }}"
+                    required>
 
-                <label class="option">
-                    <input
-                        type="radio"
-                        name="q{{ qindex }}"
-                        value="{{ option }}"
-                        required
-                    >
-                    {{ option }}
-                </label>
+                <span>{{ option }}</span>
 
-                {% endfor %}
+            </label>
 
-            </div>
+            {% endfor %}
 
-        {% endfor %}
+            <br><br>
 
-        <div class="button-area">
+            <button type="submit" id="nextBtn">
+                Next ➜
+            </button>
 
-            {% if page < total_pages %}
+        </form>
 
-                <button
-                    type="button"
-                    onclick="location.href='/quiz?page={{ page + 1 }}'">
-                    Next Page ➜
-                </button>
-
-            {% else %}
-
-                <button type="submit">
-                    ✅ Finish Quiz
-                </button>
-
-            {% endif %}
-
-        </div>
-
-    </form>
+    </div>
 
 </div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>
