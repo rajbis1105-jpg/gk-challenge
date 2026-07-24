@@ -6,71 +6,109 @@
     <title>Quiz Result</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
 
+    <style>
+        .question-box{
+            border:1px solid #ddd;
+            border-radius:10px;
+            padding:15px;
+            margin:20px 0;
+            text-align:left;
+        }
+
+        .option{
+            display:block;
+            padding:10px;
+            margin:8px 0;
+            border-radius:6px;
+        }
+
+        .correct{
+            background:#d4edda;
+            color:#155724;
+            font-weight:bold;
+        }
+
+        .wrong{
+            background:#f8d7da;
+            color:#721c24;
+            font-weight:bold;
+        }
+
+        .normal{
+            background:#f5f5f5;
+        }
+
+        .status{
+            margin-top:10px;
+            font-size:18px;
+            font-weight:bold;
+        }
+    </style>
+
+</head>
 <body>
 
 <div class="container">
 
-    <h1>🎉 Quiz Completed!</h1>
+    <h1>🎉 Quiz Completed</h1>
 
     <div class="result-box">
-
         <h2>Your Score</h2>
-
         <h1>{{ score }} / {{ total_questions }}</h1>
-
-        <p>
-            Great effort! Keep practicing to improve your General Knowledge.
-        </p>
-
     </div>
 
-    <h2>📖 Answer Summary</h2>
+    <h2>📋 Answer Review</h2>
 
     {% for r in results %}
 
-    <div class="review-box">
+    <div class="question-box">
 
-        <h3>Question {{ loop.index }}</h3>
+        <h3>{{ loop.index }}. {{ r.question }}</h3>
 
-        <p><strong>{{ r.question }}</strong></p>
+        {% for option in r.options %}
 
-        <p>
-            <strong>Your Answer:</strong>
-            {{ r.user_answer }}
-        </p>
+            {% if option == r.correct_answer %}
+                <div class="option correct">
+                    ✅ {{ option }}
+                </div>
 
-        <p>
-            <strong>Correct Answer:</strong>
-            {{ r.correct_answer }}
-        </p>
+            {% elif option == r.user_answer and not r.is_correct %}
+                <div class="option wrong">
+                    ❌ {{ option }}
+                </div>
+
+            {% else %}
+                <div class="option normal">
+                    {{ option }}
+                </div>
+            {% endif %}
+
+        {% endfor %}
 
         {% if r.is_correct %}
-            <p class="correct">✅ Correct</p>
+            <p class="status" style="color:green;">✔ Correct Answer</p>
         {% else %}
-            <p class="wrong">❌ Incorrect</p>
+            <p class="status" style="color:red;">✘ Wrong Answer</p>
         {% endif %}
 
     </div>
 
     {% endfor %}
 
-    <div class="button-group">
+    <br>
 
-        <a href="/">
-            <button type="button">🏠 Home</button>
-        </a>
+    <a href="/">
+        <button>🏠 Home</button>
+    </a>
 
-        <a href="/quiz">
-            <button type="button">🔄 Try Again</button>
-        </a>
+    <a href="/quiz">
+        <button>🔄 Play Again</button>
+    </a>
 
-    </div>
+    <br><br>
 
-    <footer>
-        <small>Created by <strong>Raj Biswas</strong> ❤️</small>
-    </footer>
+    <small>Created by <strong>Raj Biswas</strong></small>
 
 </div>
 
