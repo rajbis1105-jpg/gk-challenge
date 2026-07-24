@@ -1,56 +1,166 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>GK Master Quiz</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
+
 <body>
+
 
 <div class="container">
 
+
     <h1>🌍 GK MASTER QUIZ 🌍</h1>
 
-    <h3>Question {{ current + 1 }} of {{ total }}</h3>
+
+    <h3>
+        Question {{ current + 1 }} / {{ total }}
+    </h3>
+
+
 
     <div class="question-box">
 
-        <h2>{{ question.question }}</h2>
 
-        <form action="/answer" method="POST">
+        <h2>
+            {{ question.question }}
+        </h2>
 
-            <input type="hidden" name="current" value="{{ current }}">
+
+
+        <form action="/answer" method="POST" id="quizForm">
+
+
+            <input 
+                type="hidden" 
+                name="current" 
+                value="{{ current }}">
+
+
 
             {% for option in question.options %}
 
-            <label class="option">
+
+            <label class="option" onclick="checkAnswer(this)">
+
+
                 <input
                     type="radio"
                     name="answer"
                     value="{{ option }}"
                     required>
 
-                <span>{{ option }}</span>
+
+                <span>
+                    {{ option }}
+                </span>
+
 
             </label>
 
+
             {% endfor %}
+
+
 
             <br><br>
 
-            <button type="submit" id="nextBtn">
+
+
+            <button 
+                type="submit" 
+                id="nextBtn">
+
                 Next ➜
+
             </button>
+
 
         </form>
 
+
     </div>
+
 
 </div>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+<script>
+
+
+let correctAnswer = "{{ question.answer }}";
+
+
+function checkAnswer(element){
+
+
+    let options = document.querySelectorAll(".option");
+
+
+    options.forEach(function(option){
+
+        option.classList.add("disabled");
+
+    });
+
+
+
+    let selected = element.querySelector("input").value;
+
+
+
+    if(selected === correctAnswer){
+
+
+        element.classList.add("correct");
+
+
+    }
+
+    else{
+
+
+        element.classList.add("wrong");
+
+
+        options.forEach(function(option){
+
+
+            let value = option.querySelector("input").value;
+
+
+            if(value === correctAnswer){
+
+                option.classList.add("correct");
+
+            }
+
+
+        });
+
+
+    }
+
+
+
+    document.getElementById("nextBtn").style.display = "inline-block";
+
+
+}
+
+
+
+</script>
+
+
 
 </body>
 </html>
