@@ -1,16 +1,19 @@
-/* ===== GK CHALLENGE QUIZ STYLE ===== */
+/* ===== GK CHALLENGE PREMIUM QUIZ STYLE ===== */
 
 * {
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Poppins', Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    margin: 0;
-    padding: 10px;
-    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #00f5ff33, transparent 35%),
+        radial-gradient(circle at bottom right, #ff00cc33, transparent 35%),
+        linear-gradient(135deg,#141e30,#243b55);
+
+    margin:0;
+    padding:15px;
+    min-height:100vh;
 }
 
 
@@ -18,58 +21,66 @@ body {
 
 .container {
 
-    max-width: 700px;
+    max-width:700px;
 
-    margin: 25px auto;
+    margin:30px auto;
 
-    background: white;
+    background:rgba(255,255,255,0.12);
 
-    padding: 20px;
+    backdrop-filter:blur(15px);
 
-    border-radius: 18px;
+    padding:25px;
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.35);
 
 }
-
 
 
 /* TITLE */
 
 h1 {
 
-    text-align: center;
+    text-align:center;
 
-    color: #4a148c;
+    color:white;
 
-    font-size: 28px;
+    font-size:32px;
 
-    font-weight: 900;
+    font-weight:900;
 
-    margin: 5px 0 15px;
+    letter-spacing:1px;
+
+    text-shadow:
+    0 0 10px #00f5ff;
+
+    margin:5px 0 15px;
 
 }
 
 
 h2 {
 
-    text-align: center;
+    text-align:center;
 
-    color: #6a1b9a;
+    color:#00f5ff;
 
-    font-weight: 800;
+    font-weight:800;
 
 }
 
 
-
 p {
 
-    text-align: center;
+    text-align:center;
 
-    color: #444;
+    color:#eee;
 
-    font-size: 15px;
+    font-size:15px;
 
 }
 
@@ -79,79 +90,99 @@ p {
 
 .question {
 
-    background: #f8f9ff;
+    background:
+    linear-gradient(145deg,#ffffff22,#ffffff08);
 
-    padding: 14px;
+    padding:18px;
 
-    margin: 15px 0;
+    margin:18px 0;
 
-    border-radius: 12px;
+    border-radius:18px;
 
-    border-left: 5px solid #667eea;
+    border-left:5px solid #00f5ff;
 
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    box-shadow:
+    inset 0 0 20px rgba(255,255,255,0.05),
+    0 8px 20px rgba(0,0,0,0.25);
+
+    transition:.3s;
 
 }
+
+
+.question:hover {
+
+    transform:translateY(-3px);
+
+}
+
 
 
 .question h3 {
 
-    font-size: 16px;
+    font-size:17px;
 
-    color: #333;
+    color:white;
 
-    margin: 0 0 12px;
+    margin:0 0 15px;
 
 }
 
 
 
-/* ANSWER OPTIONS */
+/* OPTIONS */
 
 .option {
 
-    display: block;
+    display:block;
 
-    width: 100%;
+    width:100%;
 
-    background: #ffffff;
+    background:rgba(255,255,255,0.15);
 
-    padding: 10px;
+    color:white;
 
-    margin: 8px 0;
+    padding:12px;
 
-    border-radius: 8px;
+    margin:10px 0;
 
-    border: 1.5px solid #ddd;
+    border-radius:12px;
 
-    cursor: pointer;
+    border:1px solid rgba(255,255,255,0.25);
 
-    font-size: 15px;
+    cursor:pointer;
 
-    font-weight: 600;
+    font-size:15px;
 
-    transition: 0.25s;
+    font-weight:600;
+
+    transition:.3s;
 
 }
 
 
 .option:hover {
 
-    background: #eef1ff;
+    background:#00f5ff33;
 
-    border-color: #667eea;
+    border-color:#00f5ff;
+
+    transform:translateX(5px);
+
+    box-shadow:
+    0 0 15px #00f5ff55;
 
 }
 
 
 
-/* RADIO BUTTON */
+/* RADIO */
 
 .option input {
 
-    margin-right: 8px;
+    margin-right:10px;
 
-    transform: scale(1.1);
+    transform:scale(1.2);
 
 }
 
@@ -161,36 +192,41 @@ p {
 
 button {
 
-    display: block;
+    display:block;
 
-    margin: 18px auto;
+    margin:25px auto;
 
-    padding: 12px 30px;
+    padding:14px 40px;
 
-    border: none;
+    border:none;
 
-    border-radius: 40px;
+    border-radius:50px;
 
-    background: linear-gradient(135deg,#ff512f,#dd2476);
+    background:
+    linear-gradient(135deg,#ff512f,#dd2476);
 
-    color: white;
+    color:white;
 
-    font-size: 16px;
+    font-size:17px;
 
-    font-weight: bold;
+    font-weight:800;
 
-    cursor: pointer;
+    cursor:pointer;
 
-    box-shadow: 0 6px 15px rgba(221,36,118,0.35);
+    box-shadow:
+    0 10px 25px rgba(221,36,118,.45);
 
-    transition: 0.3s;
+    transition:.35s;
 
 }
 
 
 button:hover {
 
-    transform: translateY(-2px);
+    transform:translateY(-5px) scale(1.05);
+
+    box-shadow:
+    0 15px 35px rgba(221,36,118,.65);
 
 }
 
@@ -200,15 +236,21 @@ button:hover {
 
 .result-box {
 
-    background: #f8f9ff;
+    background:rgba(255,255,255,.15);
 
-    padding: 15px;
+    backdrop-filter:blur(10px);
 
-    border-radius: 15px;
+    padding:20px;
 
-    text-align: center;
+    border-radius:20px;
 
-    margin: 15px 0;
+    text-align:center;
+
+    color:white;
+
+    margin:20px 0;
+
+    border:1px solid rgba(255,255,255,.2);
 
 }
 
@@ -218,13 +260,76 @@ button:hover {
 
 small {
 
-    display: block;
+    display:block;
 
-    text-align: center;
+    text-align:center;
 
-    color: #666;
+    color:#ddd;
 
-    margin-top: 15px;
+    margin-top:20px;
+
+}
+
+
+
+/* ANSWER COLORS */
+
+.option.correct {
+
+    background:
+    linear-gradient(135deg,#11998e,#38ef7d);
+
+    color:white;
+
+    border:2px solid #00ff88;
+
+    box-shadow:
+    0 0 20px #00ff8855;
+
+}
+
+
+
+.option.wrong {
+
+    background:
+    linear-gradient(135deg,#cb2d3e,#ef473a);
+
+    color:white;
+
+    border:2px solid #ff4444;
+
+    box-shadow:
+    0 0 20px #ff444455;
+
+}
+
+
+
+.option.disabled {
+
+    pointer-events:none;
+
+    opacity:.95;
+
+}
+
+
+
+.option.correct span,
+.option.wrong span {
+
+    color:white;
+
+}
+
+
+
+/* NEXT BUTTON */
+
+#nextBtn {
+
+    display:none;
 
 }
 
@@ -232,70 +337,41 @@ small {
 
 /* MOBILE */
 
-@media(max-width:600px) {
+@media(max-width:600px){
 
 
-    .container {
+.container{
 
-        padding: 15px;
-
-    }
-
-
-    h1 {
-
-        font-size: 22px;
-
-    }
-
-
-    .question {
-
-        padding: 12px;
-
-    }
-
-
-    .option {
-
-        font-size: 14px;
-
-        padding: 9px;
-
-    }
-
-
-    button {
-
-        width: 85%;
-
-    }
+    padding:18px;
 
 }
-/* ===== Answer Colors ===== */
 
-.option.correct {
-    background: #4CAF50;
-    color: white;
-    border: 2px solid #2e7d32;
+
+h1{
+
+    font-size:24px;
+
 }
 
-.option.wrong {
-    background: #f44336;
-    color: white;
-    border: 2px solid #b71c1c;
+
+.question{
+
+    padding:14px;
+
 }
 
-.option.disabled {
-    pointer-events: none;
-    opacity: 0.95;
+
+.option{
+
+    font-size:14px;
+
 }
 
-.option.correct span,
-.option.wrong span {
-    color: white;
+
+button{
+
+    width:90%;
+
 }
 
-#nextBtn{
-    display:none;
 }
