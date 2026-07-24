@@ -1,96 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
 
-    <title>𝐐𝐔𝐈𝐙 𝐑𝐄𝐒𝐔𝐋𝐓</title>
-
-    <link rel="stylesheet" href="/static/style.css">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>
-        🎉 <b>𝐐𝐔𝐈𝐙 𝐅𝐈𝐍𝐈𝐒𝐇𝐄𝐃 𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋𝐋𝐘!</b> 🎉
-    </h1>
+    <h1>🎉 Quiz Completed!</h1>
 
     <div class="result-box">
 
-        <h2>
-            🏆 <b>𝐘𝐎𝐔𝐑 𝐒𝐂𝐎𝐑𝐄:</b>
-            <br>
-            {{ score }} / {{ total_questions }}
-        </h2>
+        <h2>Your Score</h2>
+
+        <h1>{{ score }} / {{ total_questions }}</h1>
 
         <p>
-            ⭐ <b>𝐊𝐄𝐄𝐏 𝐋𝐄𝐀𝐑𝐍𝐈𝐍𝐆 𝐀𝐍𝐃 𝐈𝐌𝐏𝐑𝐎𝐕𝐄 𝐘𝐎𝐔𝐑 𝐊𝐍𝐎𝐖𝐋𝐄𝐃𝐆𝐄!</b> ⭐
+            Great effort! Keep practicing to improve your General Knowledge.
         </p>
 
     </div>
 
-    <br>
-
-    <h2>📋 𝐀𝐍𝐒𝐖𝐄𝐑 𝐑𝐄𝐕𝐈𝐄𝐖</h2>
+    <h2>📖 Answer Summary</h2>
 
     {% for r in results %}
 
-    <div class="result-box" style="text-align:left; margin-top:20px;">
+    <div class="review-box">
 
-        <h3>{{ loop.index }}. {{ r.question }}</h3>
+        <h3>Question {{ loop.index }}</h3>
+
+        <p><strong>{{ r.question }}</strong></p>
 
         <p>
-            <strong>📝 𝐘𝐎𝐔𝐑 𝐀𝐍𝐒𝐖𝐄𝐑:</strong>
+            <strong>Your Answer:</strong>
             {{ r.user_answer }}
         </p>
 
         <p>
-            <strong>✅ 𝐂𝐎𝐑𝐑𝐄𝐂𝐓 𝐀𝐍𝐒𝐖𝐄𝐑:</strong>
+            <strong>Correct Answer:</strong>
             {{ r.correct_answer }}
         </p>
 
         {% if r.is_correct %}
-            <p style="color:green;">
-                ✔ <strong>𝐂𝐎𝐑𝐑𝐄𝐂𝐓</strong>
-            </p>
+            <p class="correct">✅ Correct</p>
         {% else %}
-            <p style="color:red;">
-                ✘ <strong>𝐖𝐑𝐎𝐍𝐆</strong>
-            </p>
+            <p class="wrong">❌ Incorrect</p>
         {% endif %}
 
     </div>
 
     {% endfor %}
 
-    <br>
+    <div class="button-group">
 
-    <a href="/">
-        <button>
-            🏠 <b>𝐇𝐎𝐌𝐄</b>
-        </button>
-    </a>
+        <a href="/">
+            <button type="button">🏠 Home</button>
+        </a>
 
-    <a href="/quiz">
-        <button>
-            🔄 <b>𝐏𝐋𝐀𝐘 𝐀𝐆𝐀𝐈𝐍</b>
-        </button>
-    </a>
+        <a href="/quiz">
+            <button type="button">🔄 Try Again</button>
+        </a>
 
-    <br><br>
+    </div>
 
-    <small>
-        𝐂𝐑𝐄𝐀𝐓𝐄𝐃 𝐁𝐘
-        <strong>𝐑𝐀𝐉 𝐁𝐈𝐒𝐖𝐀𝐒</strong>
-    </small>
+    <footer>
+        <small>Created by <strong>Raj Biswas</strong> ❤️</small>
+    </footer>
 
 </div>
 
 </body>
-
 </html>
