@@ -272,3 +272,30 @@ small {
     }
 
 }
+/* ===== Answer Colors ===== */
+
+.option.correct {
+    background: #4CAF50;
+    color: white;
+    border: 2px solid #2e7d32;
+}
+
+.option.wrong {
+    background: #f44336;
+    color: white;
+    border: 2px solid #b71c1c;
+}
+
+.option.disabled {
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+.option.correct span,
+.option.wrong span {
+    color: white;
+}
+
+#nextBtn{
+    display:none;
+}
