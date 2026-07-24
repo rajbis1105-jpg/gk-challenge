@@ -1,113 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GK Master Quiz</title>
 
-    <title>𝐆𝐊 𝐂𝐇𝐀𝐋𝐋𝐄𝐍𝐆𝐄</title>
-
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>
-        🧠 𝐆𝐊 𝐂𝐇𝐀𝐋𝐋𝐄𝐍𝐆𝐄 🧠
-    </h1>
-
-
-    <p>
-        🔥 <b>𝐏𝐀𝐆𝐄 {{ page }} / {{ total_pages }}</b> 🔥
-    </p>
-
+    <header>
+        <h1>🌍 GK MASTER QUIZ 🌍</h1>
+        <p><strong>Page {{ page }} of {{ total_pages }}</strong></p>
+    </header>
 
     <form method="POST">
 
-
-    {% for q in questions %}
-
-        <div class="question">
-
-
-            <h3>
-                {{ (page-1)*10 + loop.index }}. 
-                <b>{{ q.question }}</b>
-            </h3>
-
-
+        {% for q in questions %}
 
             {% set qindex = (page-1)*10 + loop.index0 %}
 
+            <div class="question-box">
 
+                <h3>
+                    Question {{ (page-1)*10 + loop.index }}
+                </h3>
 
-            {% for option in q.options %}
+                <p><strong>{{ q.question }}</strong></p>
 
+                {% for option in q.options %}
 
                 <label class="option">
-
-
                     <input
                         type="radio"
                         name="q{{ qindex }}"
                         value="{{ option }}"
                         required
                     >
-
-
-                    <b>{{ option }}</b>
-
-
+                    {{ option }}
                 </label>
 
+                {% endfor %}
 
+            </div>
 
-            {% endfor %}
+        {% endfor %}
 
+        <div class="button-area">
 
+            {% if page < total_pages %}
+
+                <button
+                    type="button"
+                    onclick="location.href='/quiz?page={{ page + 1 }}'">
+                    Next Page ➜
+                </button>
+
+            {% else %}
+
+                <button type="submit">
+                    ✅ Finish Quiz
+                </button>
+
+            {% endif %}
 
         </div>
 
-
-
-    {% endfor %}
-
-
-
-    {% if page < total_pages %}
-
-
-        <button 
-            type="button" 
-            onclick="window.location.href='/quiz?page={{ page + 1 }}'">
-
-            ➡️ <b>NEXT</b>
-
-        </button>
-
-
-    {% else %}
-
-
-        <button type="submit">
-
-            🚀 <b>SUBMIT QUIZ</b> 🚀
-
-        </button>
-
-
-    {% endif %}
-
-
-
     </form>
-
 
 </div>
 
-
 </body>
-
 </html>
