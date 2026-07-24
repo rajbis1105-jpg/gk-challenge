@@ -1,52 +1,75 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, session
 from questions import questions
 
 app = Flask(__name__)
+app.secret_key = "gk_master_secret_key"
 
 
 @app.route("/")
 def home():
+    session.clear()
     return render_template("index.html")
 
 
-@app.route("/quiz", methods=["GET", "POST"])
+@app.route("/quiz")
 def quiz():
 
-    if request.method == "POST":
+    current = int(request.args.get("q", 0))
 
-        score = 0
-        results = []
+    if current >= len(questions):
+        return redirect(url_for("result"))
 
-        for i, q in enumerate(questions):
-
-            user_answer = request.form.get(f"q{i}")
-            correct_answer = q["answer"]
-
-            is_correct = user_answer == correct_answer
-
-            if is_correct:
-                score += 1
-
-            results.append({
-                "question": q["question"],
-                "options": q["options"],
-                "user_answer": user_answer if user_answer else "No Answer",
-                "correct_answer": correct_answer,
-                "is_correct": is_correct
-            })
-
-        return render_template(
-            "result.html",
-            score=score,
-            total_questions=len(questions),
-            results=results
-        )
+    question = questions[current]
 
     return render_template(
         "quiz.html",
-        questions=questions
+        question=question,
+        current=current,
+        total=len(questions)
+    )
+@app.route("/answer", methods=["POST"])
+def answer():
+
+    current = int(request.form["current"])
+    selected = request.form["answer"]
+
+    if "score" not in session:
+        session["score"] = 0
+
+    if "results" not in session:
+        session["results"] = []
+
+    correct = questions[current]["answer"]
+
+    is_correct = selected == correct
+
+    if is_correct:
+        session["score"] += 1
+
+    session["results"].append({
+        "question": questions[current]["question"],
+        "user": selected,
+        "correct": correct,
+        "is_correct": is_correct
+    })
+
+    return redirect(url_for("quiz", q=current + 1))
+
+
+@app.route("/result")
+def result():
+
+    score = session.get("score", 0)
+    results = session.get("results", [])
+
+    return render_template(
+        "result.html",
+        score=score,
+        total=len(questions),
+        results=results
     )
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
